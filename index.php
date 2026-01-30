@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="assets/style.css" />
     <link rel="icon" type="image/png" href="assets/pawnshop.png">
+    <!-- keywords -->
+    <meta name="keywords"
+        content="gadget pawnshop, electronics pawning, low interest pawnshop, fast cash pawnshop, gadget loans, motorcycle pawning, affordable pawnshop, secure pawnshop, flexible pawn terms, gadget appraisal, quick cash loans, pawnshop services, gadget resale, motorcycle loans, gadget collateral">
 
 </head>
+
 <body>
     <!-- Header -->
     <header id="header">
@@ -27,7 +34,7 @@
                     <li><a href="#rates">Rates</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#how-to">How to Pawn</a></li>
-                    <li><a href="#items">Items for Sale</a></li>
+                    <li><a href="#items">Items</a></li>
                     <li><a href="#locations">Locations</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -36,16 +43,51 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Fast, Safe, and Affordable Gadget Pawning</h1>
-            <p>Get quick cash for your gadgets and electronics at the lowest interest rates in town. Flexible terms and fast approval for your convenience.</p>
-            <div class="hero-buttons">
-                <a href="#how-to" class="btn btn-primary">Pawn an Item</a>
-                <a href="#items" class="btn btn-secondary">View Items for Sale</a>
+    <section class="hero-carousel" id="home">
+        <div class="carousel-container">
+            <div class="carousel-slide active"
+                style="background-image: url('assets/images/hero1.jpg');">
+                <div class="carousel-content">
+                    <h1>Fast, Safe, and Affordable Gadget Pawning</h1>
+                    <p>Get quick cash for your gadgets and electronics at the lowest interest rates in town. Flexible
+                        terms and fast approval for your convenience.</p>
+                    <div class="hero-buttons">
+                        <a href="#how-to" class="btn btn-primary">Pawn an Item</a>
+                        <a href="#items" class="btn btn-secondary">View Items</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-slide"
+                style="background-image: url('assets/images/hero3.jpg');">
+                <div class="carousel-content">
+                    <h1>Upgrade Your Gadgets Today</h1>
+                    <p>Check out our premium Items and grab your favorite electronics at unbeatable prices.</p>
+                    <div class="hero-buttons">
+                        <a href="#items" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-slide"
+                style="background-image: url('assets/images/hero4.jpg');">
+                <div class="carousel-content">
+                    <h1>Flexible Pawn Terms</h1>
+                    <p>We offer flexible loan terms and instant approval to meet your cash needs without hassle.</p>
+                    <div class="hero-buttons">
+                        <a href="#how-to" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <div class="carousel-controls">
+                <span class="prev">&#10094;</span>
+                <span class="next">&#10095;</span>
             </div>
         </div>
     </section>
+
 
     <!-- Interest Rates Section -->
     <section class="interest-rates" id="rates">
@@ -144,7 +186,7 @@
         </div>
     </section>
 
-    <!-- Items for Sale Section -->
+    <!-- Items Section -->
     <section class="items-for-sale" id="items">
         <div class="container">
             <div class="section-title">
@@ -262,7 +304,7 @@
                                 <td>Monday - Saturday</td>
                                 <td>9:00 AM - 6:00 PM</td>
                             </tr>
-                          
+
                         </table>
                     </div>
                 </div>
@@ -283,7 +325,9 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We offer a grace period of 30 days after the redemption date. If you're unable to redeem within this period, you may apply for a renewal by paying the interest. If not renewed, the item will be forfeited and made available for sale.</p>
+                        <p>We offer a grace period of 30 days after the redemption date. If you're unable to redeem
+                            within this period, you may apply for a renewal by paying the interest. If not renewed, the
+                            item will be forfeited and made available for sale.</p>
                     </div>
                 </div>
                 <div class="faq-item fade-in">
@@ -292,7 +336,9 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, we accept items without receipts. However, having the original receipt may result in a higher appraisal value. For gadgets, we conduct thorough testing to determine functionality and value.</p>
+                        <p>Yes, we accept items without receipts. However, having the original receipt may result in a
+                            higher appraisal value. For gadgets, we conduct thorough testing to determine functionality
+                            and value.</p>
                     </div>
                 </div>
                 <div class="faq-item fade-in">
@@ -301,7 +347,9 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Our expert appraisers consider several factors: current market value, brand, model, condition, age, functionality, and demand. We use up-to-date pricing guides and market analysis to ensure fair valuation.</p>
+                        <p>Our expert appraisers consider several factors: current market value, brand, model,
+                            condition, age, functionality, and demand. We use up-to-date pricing guides and market
+                            analysis to ensure fair valuation.</p>
                     </div>
                 </div>
             </div>
@@ -352,7 +400,8 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Gadget Pawnshop</h3>
-                    <p>Your trusted partner for fast, safe, and affordable pawning services since 2025. We provide the lowest interest rates with flexible terms.</p>
+                    <p>Your trusted partner for fast, safe, and affordable pawning services since 2025. We provide the
+                        lowest interest rates with flexible terms.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -367,7 +416,7 @@
                         <li><a href="#rates">Interest Rates</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#how-to">How to Pawn</a></li>
-                        <li><a href="#items">Items for Sale</a></li>
+                        <li><a href="#items">Items</a></li>
                         <li><a href="#locations">Branch Locations</a></li>
                     </ul>
                 </div>
@@ -388,6 +437,7 @@
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="assets/script.js"></script> 
+    <script src="assets/script.js"></script>
 </body>
+
 </html>
