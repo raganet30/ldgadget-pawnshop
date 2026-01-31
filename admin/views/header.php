@@ -5,8 +5,10 @@
 
     <div class="right">
         <div class="profile">
-            <span class="avatar"><i class="bi bi-person-circle"></i></span>
-            <span class="logout" onclick="location.href='index.php'" >Logout</span>
+            <span class="avatar">
+                <i class="bi bi-person-circle"></i>
+            </span>
+            <a href="logout.php" class="logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
         </div>
     </div>
 </header>

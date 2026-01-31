@@ -18,28 +18,35 @@
                 <p>Admin Login</p>
             </div>
 
-            <form class="login-form">
+            <form class="login-form" method="POST" action="../processes/login_process.php">
+
+                <!-- Error alert -->
+                <?php if (isset($_GET['error'])): ?>
+                    <div class="login-error">
+                        <?= htmlspecialchars($_GET['error']) ?>
+                    </div>
+                <?php endif; ?>
+
                 <div class="form-group">
                     <label>Email or Username</label>
-                    <input type="text" placeholder="admin@example.com" required>
+                    <input type="text" name="username" placeholder="admin@example.com" required>
                 </div>
 
                 <div class="form-group">
                     <label>Password</label>
                     <div class="password-wrapper">
-                        <input type="password" id="password" placeholder="••••••••" required>
+                        <input type="password" name="password" id="password" placeholder="••••••••" required>
                         <span class="toggle-password" onclick="togglePassword()">👁</span>
                     </div>
                 </div>
-                
-                <button type="submit" class="btn-login"><a href="dashboard.php">Login</a></button>
 
-
+                <button type="submit" class="btn-login">Login</button>
 
                 <div class="login-footer">
                     <a href="#">Forgot password?</a>
                 </div>
             </form>
+
         </div>
     </div>
 

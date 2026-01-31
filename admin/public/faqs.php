@@ -1,3 +1,4 @@
+<?php require_once '../processes/auth_check.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
