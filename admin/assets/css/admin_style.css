@@ -458,12 +458,12 @@ body.admin-body {
     padding: 20px;
 }
 
-.ads-table {
+/* .data-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.ads-table th {
+.data-table th {
     text-align: left;
     font-size: 0.85rem;
     color: #555;
@@ -471,11 +471,11 @@ body.admin-body {
     border-bottom: 1px solid #eee;
 }
 
-.ads-table td {
+.data-table td {
     padding: 14px 0;
     font-size: 0.9rem;
     vertical-align: middle;
-}
+} */
 
 .ad-preview {
     width: 80px;
@@ -525,7 +525,7 @@ body.admin-body {
 
 /* Modal Styles */
 /* Modal Styles */
-.modal {
+/* .modal {
     display: none;
     position: fixed;
     z-index: 999;
@@ -561,4 +561,22 @@ body.admin-body {
     max-height: 200px;
     border: 1px solid #ccc;
     border-radius: 4px;
+} */
+
+
+#zoomedImage {
+    animation: zoomIn 0.3s ease;
 }
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+

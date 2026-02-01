@@ -18,11 +18,12 @@
             <?php include '../views/header.php'; ?>
 
             <main class="content">
-
+                <div id="adsAlertContainer"></div>
                 <div class="page-header">
+
                     <div>
                         <h1>Ads Section</h1>
-                        <p class="subtitle">Manage homepage hero advertisements</p>
+                        <p class="subtitle">Manage homepage hero ads on website</p>
                     </div>
 
                     <button class="btn-primary" onclick="openAddAdModal()">
@@ -32,122 +33,239 @@
                 </div>
 
                 <!-- Ads Table -->
+                <!-- Ads Table -->
                 <div class="card">
-                    <table class="ads-table">
-                        <thead>
-                            <tr>
-                                <th>Preview</th>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
+                    <div class="card-body">
+                        <table id="adsTable" class="table table-bordered table-striped align-middle w-100">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Preview</th>
+                                    <th>Title</th>
+                                    <th>Short Description</th>
+                                    <th>Status</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                            <!-- Sample Row -->
-                            <tr>
-                                <td>
-                                    <img src="../assets/sample-ad.jpg" class="ad-preview">
-                                </td>
-                                <td>Fast Gadget Loans</td>
-                                <td>Low interest rates with fast approval</td>
-                                <td>
-                                    <span class="badge active">Active</span>
-                                </td>
-                                <td class="actions">
-                                    <button class="icon-btn edit" onclick="openEditAdModal()">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-
-                                    <button class="icon-btn delete">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-
-
-                <!-- Add Ad Modal -->
-                <div id="addAdModal" class="modal">
-                    <div class="modal-content large-modal">
-                        <span class="close" onclick="closeAddAdModal()">&times;</span>
-                        <h2>Add New Ad</h2>
-                        <form>
-                            <div class="form-group">
-                                <label for="addAdTitle">Title</label>
-                                <input type="text" id="addAdTitle" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="addAdDescription">Description</label>
-                                <textarea id="addAdDescription" rows="3" required></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="addAdStatus">Status</label>
-                                <select id="addAdStatus" required>
-                                    <option value="Active">Active</option>
-                                    <option value="Inactive">Inactive</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="addAdFile">Upload Photo</label>
-                                <input type="file" id="addAdFile" accept="image/*">
-                                <img id="addAdFilePreview" class="image-preview" src="#" alt="Preview"
-                                    style="display:none;">
-                            </div>
-
-
-                            <div class="form-actions">
-                                <button type="submit" class="btn-primary">Save</button>
-                            </div>
-                        </form>
+                            <tbody id="adsTableBody">
+                                <!-- Dynamic Content -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
-                <!-- Edit Ad Modal -->
-                <div id="editAdModal" class="modal">
-                    <div class="modal-content large-modal">
-                        <span class="close" onclick="closeEditAdModal()">&times;</span>
-                        <h2>Edit Ad</h2>
-                        <form>
-                            <div class="form-group">
-                                <label for="editAdTitle">Title</label>
-                                <input type="text" id="editAdTitle" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="editAdDescription">Description</label>
-                                <textarea id="editAdDescription" rows="3" required></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="editAdStatus">Status</label>
-                                <select id="editAdStatus" required>
-                                    <option value="Active">Active</option>
-                                    <option value="Inactive">Inactive</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="editAdFile">Upload Photo</label>
-                                <input type="file" id="editAdFile" accept="image/*">
-                                <img id="editAdFilePreview" class="image-preview" src="#" alt="Preview"
-                                    style="display:none;">
-                            </div>
 
 
-                            <div class="form-actions">
-                                <button type="submit" class="btn-primary">Save Changes</button>
-                            </div>
-                        </form>
+
+
+                <!-- Bootstrap Add Ad Modal -->
+                <div class="modal fade" id="addAdModal" tabindex="-1" aria-labelledby="addAdModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+
+                            <form id="addAdForm" enctype="multipart/form-data">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addAdModalLabel">Add New Ad</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="row g-3">
+
+                                        <!-- LEFT COLUMN -->
+                                        <div class="col-md-7">
+
+                                            <div class="mb-3">
+                                                <label for="addAdTitle" class="form-label">Title</label>
+                                                <input type="text" class="form-control" id="addAdTitle" required>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="addAdDescription" class="form-label">Description</label>
+                                                <textarea class="form-control" id="addAdDescription" rows="4"
+                                                    required></textarea>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="addAdStatus" class="form-label">Status</label>
+                                                <select class="form-select" id="addAdStatus" required>
+                                                    <option value="1">Active</option>
+                                                    <option value="0">Inactive</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- RIGHT COLUMN -->
+                                        <div class="col-md-5">
+
+                                            <div class="mb-3">
+                                                <label for="addAdFile" class="form-label">Upload Photo</label>
+                                                <input type="file" class="form-control" id="addAdFile" accept="image/*">
+                                            </div>
+
+                                            <div class="border rounded p-2 text-center">
+                                                <small class="text-muted d-block mb-2">Image Preview</small>
+                                                <img id="addAdFilePreview" class="img-fluid rounded d-none"
+                                                    alt="Image Preview" style="max-height: 220px; object-fit: contain;">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        Save
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </div>
                     </div>
                 </div>
+
+
+
+                <!-- Bootstrap Edit Ad Modal -->
+                <div class="modal fade" id="editAdModal" tabindex="-1" aria-labelledby="editAdModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+
+                            <form id="editAdForm" enctype="multipart/form-data">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editAdModalLabel">Edit Ad</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="row g-3">
+
+                                        <!-- LEFT COLUMN -->
+                                        <div class="col-md-7">
+                                            <input type="hidden" id="editAdId">
+
+                                            <div class="mb-3">
+                                                <label for="editAdTitle" class="form-label">Title</label>
+                                                <input type="text" class="form-control" id="editAdTitle" required>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="editAdDescription" class="form-label">Description</label>
+                                                <textarea class="form-control" id="editAdDescription" rows="4"
+                                                    required></textarea>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="editAdStatus" class="form-label">Status</label>
+                                                <select class="form-select" id="editAdStatus" required>
+                                                    <option value="1">Active</option>
+                                                    <option value="0">Inactive</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- RIGHT COLUMN -->
+                                        <div class="col-md-5">
+                                            <div class="mb-3">
+                                                <label for="editAdFile" class="form-label">Upload Photo</label>
+                                                <input type="file" class="form-control" id="editAdFile"
+                                                    accept="image/*">
+                                            </div>
+
+                                            <div class="border rounded p-2 text-center">
+                                                <small class="text-muted d-block mb-2">Image Preview</small>
+                                                <img id="editAdFilePreview" class="img-fluid rounded d-none"
+                                                    alt="Image Preview" style="max-height: 220px; object-fit: contain;">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        Save Changes
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Delete Ad Modal -->
+                <div class="modal fade" id="deleteAdModal" tabindex="-1" aria-labelledby="deleteAdModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <div class="modal-header bg-danger text-white">
+                                <h5 class="modal-title" id="deleteAdModalLabel">
+                                    Confirm Delete
+                                </h5>
+                                <button type="button" class="btn-close btn-close-white"
+                                    data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                <div id="deleteAlert"></div>
+
+                                <p class="mb-0">
+                                    Are you sure you want to delete this ad?
+                                </p>
+                                <small class="text-muted">
+                                    This action cannot be undone.
+                                </small>
+
+                                <input type="hidden" id="deleteAdId">
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Cancel
+                                </button>
+                                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                                    Delete
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Image Zoom Modal -->
+                <div class="modal fade" id="imageZoomModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal-content bg-transparent border-0">
+
+                            <div class="modal-body text-center p-0 position-relative">
+                                <button type="button"
+                                    class="btn-close position-absolute top-0 end-0 m-3 bg-white rounded-circle"
+                                    data-bs-dismiss="modal" aria-label="Close"></button>
+
+                                <img id="zoomedImage" class="img-fluid rounded shadow" style="max-height: 90vh;">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
 
             </main>
 
@@ -158,50 +276,8 @@
         </div>
     </div>
 
-    <script>
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('collapsed');
-        }
-    </script>
+    <script src="../assets/js/ads.js?v=<?= filemtime(__DIR__ . '/../assets/js/ads.js') ?>" defer></script>
 
-    <script>
-        // Modal Open/Close
-        function openAddAdModal() { document.getElementById('addAdModal').style.display = 'block'; }
-        function closeAddAdModal() { document.getElementById('addAdModal').style.display = 'none'; }
-
-        function openEditAdModal() { document.getElementById('editAdModal').style.display = 'block'; }
-        function closeEditAdModal() { document.getElementById('editAdModal').style.display = 'none'; }
-
-        // Image Preview for Add Modal
-        document.getElementById('addAdFile').addEventListener('change', function (event) {
-            const preview = document.getElementById('addAdFilePreview');
-            const file = event.target.files[0];
-            if (file) {
-                preview.src = URL.createObjectURL(file);
-                preview.style.display = 'block';
-            } else {
-                preview.style.display = 'none';
-            }
-        });
-
-        // Image Preview for Edit Modal
-        document.getElementById('editAdFile').addEventListener('change', function (event) {
-            const preview = document.getElementById('editAdFilePreview');
-            const file = event.target.files[0];
-            if (file) {
-                preview.src = URL.createObjectURL(file);
-                preview.style.display = 'block';
-            } else {
-                preview.style.display = 'none';
-            }
-        });
-
-        // Close modals when clicking outside
-        window.onclick = function (event) {
-            if (event.target == document.getElementById('addAdModal')) closeAddAdModal();
-            if (event.target == document.getElementById('editAdModal')) closeEditAdModal();
-        }
-    </script>
 
 </body>
 

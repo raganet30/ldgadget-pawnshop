@@ -12,8 +12,8 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="assets/style.css" />
-    <link rel="icon" type="image/png" href="assets/pawnshop.png">
+    <link rel="stylesheet" href="assets/css/style.css?v=<?= filemtime(__DIR__ . '/assets/css/style.css') ?>" />
+    <link rel="icon" type="image/png" href="assets/images/pawnshop.png">
     <!-- keywords -->
     <meta name="keywords"
         content="gadget pawnshop, electronics pawning, low interest pawnshop, fast cash pawnshop, gadget loans, motorcycle pawning, affordable pawnshop, secure pawnshop, flexible pawn terms, gadget appraisal, quick cash loans, pawnshop services, gadget resale, motorcycle loans, gadget collateral">
@@ -44,49 +44,17 @@
 
     <!-- Hero Section -->
     <section class="hero-carousel" id="home">
-        <div class="carousel-container">
-            <div class="carousel-slide active"
-                style="background-image: url('assets/images/hero1.jpg');">
-                <div class="carousel-content">
-                    <h1>Fast, Safe, and Affordable Gadget Pawning</h1>
-                    <p>Get quick cash for your gadgets and electronics at the lowest interest rates in town. Flexible
-                        terms and fast approval for your convenience.</p>
-                    <div class="hero-buttons">
-                        <a href="#how-to" class="btn btn-primary">Pawn an Item</a>
-                        <a href="#items" class="btn btn-secondary">View Items</a>
-                    </div>
-                </div>
-            </div>
+        <div class="carousel-container" id="heroCarouselContainer">
+            <!-- Slides will be inserted here -->
+        </div>
 
-            <div class="carousel-slide"
-                style="background-image: url('assets/images/hero3.jpg');">
-                <div class="carousel-content">
-                    <h1>Upgrade Your Gadgets Today</h1>
-                    <p>Check out our premium Items and grab your favorite electronics at unbeatable prices.</p>
-                    <div class="hero-buttons">
-                        <a href="#items" class="btn btn-primary">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-slide"
-                style="background-image: url('assets/images/hero4.jpg');">
-                <div class="carousel-content">
-                    <h1>Flexible Pawn Terms</h1>
-                    <p>We offer flexible loan terms and instant approval to meet your cash needs without hassle.</p>
-                    <div class="hero-buttons">
-                        <a href="#how-to" class="btn btn-primary">Get Started</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Carousel Controls -->
-            <div class="carousel-controls">
-                <span class="prev">&#10094;</span>
-                <span class="next">&#10095;</span>
-            </div>
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+            <span class="prev">&#10094;</span>
+            <span class="next">&#10095;</span>
         </div>
     </section>
+
 
 
     <!-- Interest Rates Section -->
@@ -437,7 +405,7 @@
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="assets/script.js"></script>
+    <script src="assets/js/script.js?v=<?= filemtime(__DIR__ . '/assets/js/script.js') ?>"></script>
 </body>
 
 </html>
