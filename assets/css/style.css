@@ -1147,3 +1147,7 @@
             /* Center text */
             border-color: #f0f0f0;
         }
+        /* add hover */
+        .load-more-container .btn:hover {
+            background-color: #ff5252;
+        }

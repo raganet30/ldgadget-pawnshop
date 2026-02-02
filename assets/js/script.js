@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (shownItems < totalItems) {
             const loadBtn = document.createElement('button');
             loadBtn.className = 'btn btn-outline-primary';
-            loadBtn.textContent = 'Load More Items';
+            loadBtn.textContent = 'LOAD MORE';
             loadBtn.addEventListener('click', () => {
                 currentPage++;
                 renderItems(currentFilter, currentPage);
