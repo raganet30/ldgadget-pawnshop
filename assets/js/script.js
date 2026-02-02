@@ -18,15 +18,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Header scroll effect
-// window.addEventListener('scroll', () => {
-//     const header = document.getElementById('header');
-//     if (window.scrollY > 50) {
-//         header.classList.add('scrolled');
-//     } else {
-//         header.classList.remove('scrolled');
-//     }
-// });
+
 
 
 
