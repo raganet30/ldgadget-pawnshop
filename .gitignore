@@ -1,5 +1,5 @@
 /vendor/
-/.env
+.env
 .env.local                 # Local environment file
 .env.test_site             # Test site environment file
 *.log
