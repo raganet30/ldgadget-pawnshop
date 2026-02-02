@@ -1,5 +1,8 @@
 /vendor/
 /.env
+.env.local                 # Local environment file
+.env.test_site             # Test site environment file
 *.log
 *.cache
 .DS_Store
+/admin/assets/images/
