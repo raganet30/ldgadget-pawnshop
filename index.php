@@ -12,6 +12,9 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+
+
     <link rel="stylesheet" href="assets/css/style.css?v=<?= filemtime(__DIR__ . '/assets/css/style.css') ?>" />
     <link rel="icon" type="image/png" href="assets/images/pawnshop.png">
     <!-- keywords -->
@@ -117,10 +120,24 @@
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Secure Storage</h3>
-                    <p>Your items are kept in secure, climate-controlled storage while in our possession.</p>
+                    <p>Your items are kept in secure storage while in our possession.</p>
                 </div>
-            </div>
-        </div>
+                <!-- E-wallet Cashin/Cashout Services -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>E-Wallet Cashin/Cashout</h3>
+                    <p>Conveniently cash in or cash out using e-wallet(e.g. GCash, Maya) in our shop.</p>
+                </div>
+                <!-- also accept Load, bills payment, send money -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Load, Bills Payment & Send Money</h3>
+                    <p>We also accept mobile load top-ups, bills payment, and money remittance services.</p>
+                </div>
     </section>
 
     <!-- How to Pawn Section -->
@@ -161,17 +178,23 @@
                 <h2>Subasta Items</h2>
             </div>
             <div class="items-filter">
-                <button class="filter-btn active" data-filter="all">All Items</button>
-                <button class="filter-btn" data-filter="cellphone">Cellphones</button>
-                <button class="filter-btn" data-filter="laptop">Laptops</button>
-                <button class="filter-btn" data-filter="gadget">Other Gadgets</button>
-                <button class="filter-btn" data-filter="motorcycle">Motorcycles</button>
+                <!-- Category buttons will be generated dynamically -->
             </div>
             <div class="items-grid">
                 <!-- Items will be dynamically generated with JavaScript -->
             </div>
+            <!-- Load More Button Container -->
+            <div class="load-more-container"></div>
         </div>
     </section>
+    <!-- Image Zoom Modal -->
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <div id="modalCaption"></div>
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
+    </div>
 
     <!-- Branch Locations Section -->
     <section class="branch-locations" id="locations">

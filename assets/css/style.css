@@ -960,3 +960,190 @@
                 font-size: 2.8rem;
             }
         }
+
+        /* style for items images slideshow */
+        .item-img img,
+        .item-slideshow img {
+            width: 100%;
+            height: 200px;
+            /* Adjust as needed */
+            object-fit: cover;
+            /* Ensures image fits nicely */
+            border-radius: 8px;
+        }
+
+        .item-slideshow {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .item-slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .item-slideshow img.active {
+            opacity: 1;
+        }
+
+
+        /* Modal Styles */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .image-modal .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 8px;
+        }
+
+        .image-modal #modalCaption {
+            text-align: center;
+            color: #fff;
+            padding: 10px 0;
+            font-size: 16px;
+        }
+
+        .image-modal .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .image-modal .prev,
+        .image-modal .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 40px;
+            user-select: none;
+            transition: 0.3s;
+        }
+
+        .image-modal .prev {
+            left: 10px;
+        }
+
+        .image-modal .next {
+            right: 10px;
+        }
+
+        .image-modal .prev:hover,
+        .image-modal .next:hover {
+            color: #ff6b6b;
+        }
+
+
+        /* style for item status */
+        .item-card {
+            position: relative;
+            transition: opacity 0.3s ease;
+        }
+
+        .item-card.sold {
+            opacity: 0.8;
+            /* Slightly dim the card */
+        }
+
+        .item-card.sold .sold-overlay {
+            position: absolute;
+            top: 10px;
+            right: -40px;
+            /* Adjust diagonal placement */
+            width: 150px;
+            /* Increased width */
+            text-align: center;
+            transform: rotate(45deg);
+            background-color: rgba(255, 107, 107, 0.85);
+            /* Light red */
+            color: #fff;
+            font-weight: bold;
+            font-size: 25px;
+            /* Slightly larger font */
+            padding: 6px 0;
+            /* Slightly more padding */
+            z-index: 10;
+            pointer-events: none;
+            border-radius: 4px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .item-card .inquire-btn {
+            display: none;
+            /* hidden by default */
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .item-card:hover .inquire-btn {
+            display: block;
+            /* show on hover */
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        .items-for-sale {
+            position: relative;
+            /* Needed so the button can be positioned relative to the section */
+        }
+
+        .load-more-container {
+            text-align: right;
+            /* Align button to the right */
+            margin-top: 20px;
+            /* Space from items grid */
+
+        }
+
+        .load-more-container .btn {
+            padding: 0.6rem 2rem;
+            /* Increase horizontal padding to make it wider */
+            font-size: 1rem;
+            border-radius: 8px;
+            background-color: var(--primary-red);
+            color: var(--white);
+            min-width: 150px;
+            /* Optional: ensures a minimum width */
+            text-align: center;
+            /* Center text */
+            border-color: #f0f0f0;
+        }

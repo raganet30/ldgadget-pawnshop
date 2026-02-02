@@ -579,4 +579,22 @@ body.admin-body {
     }
 }
 
+/* item images preview */
+.image-preview-wrapper {
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+#modalMainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* IMPORTANT */
+}
 

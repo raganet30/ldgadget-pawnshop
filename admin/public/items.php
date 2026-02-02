@@ -18,7 +18,7 @@
             <?php include '../views/header.php'; ?>
 
             <main class="content container-fluid">
-
+                <div id="adsAlertContainer"></div>
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div>
                         <h1 class="mb-0">Subasta Items Section</h1>
@@ -37,6 +37,7 @@
                             <thead class="table-light">
                                 <tr>
                                     <th>#</th>
+                                    <th>Preview</th>
                                     <th>Item</th>
                                     <th>Category</th>
                                     <th>Price</th>
@@ -46,50 +47,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Sample Data -->
-                                <tr>
-                                    <td>1</td>
-                                    <td>
-                                        <strong>iPhone 13 Pro</strong><br>
-                                        <small class="text-muted">256GB, Graphite</small>
-                                    </td>
-                                    <td>Electronics</td>
-                                    <td>₱45,000</td>
-                                    <td><span class="badge bg-success">Active</span></td>
-                                    <td>2026-01-25</td>
-                                    <td class="text-center">
-                                        <button class="btn btn-sm btn-warning editBtn">
-                                            <i class="bi bi-pencil"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-danger deleteBtn">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>
-                                        <strong>Samsung Galaxy S22</strong><br>
-                                        <small class="text-muted">128GB, Black</small>
-                                    </td>
-                                    <td>Electronics</td>
-                                    <td>₱32,000</td>
-                                    <td><span class="badge bg-secondary">Inactive</span></td>
-                                    <td>2026-01-28</td>
-                                    <td class="text-center">
-                                        <button class="btn btn-sm btn-warning editBtn">
-                                            <i class="bi bi-pencil"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-danger deleteBtn">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                                <!-- Populated by Datatable JS -->
                             </tbody>
                         </table>
                     </div>
                 </div>
+
+                <!-- preview images modal -->
+                <div class="modal fade" id="itemImageModal" tabindex="-1" data-bs-backdrop="static"
+                    data-bs-keyboard="false">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Item Images</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <div class="image-preview-wrapper mx-auto mb-3">
+                                    <img id="modalMainImage" alt="Item Image">
+                                </div>
+                                <div id="modalThumbnails" class="d-flex justify-content-center gap-2 flex-wrap"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Insert Modal -->
                 <div class="modal fade" id="addItemModal" tabindex="-1">
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div class="modal-content">
@@ -105,37 +90,44 @@
                                     <div class="row g-3">
                                         <div class="col-md-6">
                                             <label class="form-label">Item Name</label>
-                                            <input type="text" class="form-control" placeholder="Enter item name">
+                                            <input type="text" class="form-control" id="addItemName" required>
                                         </div>
 
                                         <div class="col-md-6">
                                             <label class="form-label">Category</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Electronics, Jewelry, etc.">
+                                            <select class="form-select" id="addItemCategory" required>
+                                                <option value="" disabled selected>Select category</option>
+                                                <option value="Cellphone">Cellphone</option>
+                                                <option value="Gadget">Gadget</option>
+                                                <option value="Camera">Camera</option>
+                                                <option value="Tablet">Tablet</option>
+                                                <option value="Laptop">Laptop</option>
+                                                <option value="Vehicle">Vehicle</option>
+                                            </select>
                                         </div>
+
 
                                         <div class="col-md-12">
                                             <label class="form-label">Description</label>
-                                            <textarea class="form-control" rows="3"></textarea>
+                                            <textarea class="form-control" id="addItemDescription" rows="3"></textarea>
                                         </div>
 
                                         <div class="col-md-6">
                                             <label class="form-label">Price</label>
-                                            <input type="number" class="form-control">
+                                            <input type="number" class="form-control" id="addItemPrice" required>
                                         </div>
 
                                         <div class="col-md-6">
                                             <label class="form-label">Status</label>
-                                            <select class="form-select">
-                                                <option value="active">Active</option>
-                                                <option value="inactive">Inactive</option>
+                                            <select class="form-select" id="addItemStatus">
+                                                <option value="Available">Available</option>
+                                                <option value="Sold">Sold</option>
                                             </select>
                                         </div>
 
                                         <div class="col-md-12">
                                             <label class="form-label">Item Images</label>
-                                            <input type="file" class="form-control" multiple>
-                                            <small class="text-muted">Primary image will be set later</small>
+                                            <input type="file" class="form-control" id="addItemImages" multiple>
                                         </div>
                                     </div>
 
@@ -144,12 +136,17 @@
 
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button class="btn btn-primary">Save Item</button>
+                                <button class="btn btn-primary" type="submit" form="addItemForm">
+                                    Save Item
+                                </button>
                             </div>
 
                         </div>
                     </div>
                 </div>
+
+
+                <!-- Edit Item Modal -->
                 <div class="modal fade" id="editItemModal" tabindex="-1">
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div class="modal-content">
@@ -172,8 +169,17 @@
 
                                         <div class="col-md-6">
                                             <label class="form-label">Category</label>
-                                            <input type="text" class="form-control" id="editItemCategory">
+                                            <select class="form-select" id="editItemCategory" required>
+                                                <option value="">Select Category</option>
+                                                <option value="Cellphone">Cellphone</option>
+                                                <option value="Gadget">Gadget</option>
+                                                <option value="Camera">Camera</option>
+                                                <option value="Tablet">Tablet</option>
+                                                <option value="Laptop">Laptop</option>
+                                                <option value="Vehicle">Vehicle</option>
+                                            </select>
                                         </div>
+
 
                                         <div class="col-md-12">
                                             <label class="form-label">Description</label>
@@ -188,9 +194,14 @@
                                         <div class="col-md-6">
                                             <label class="form-label">Status</label>
                                             <select class="form-select" id="editItemStatus">
-                                                <option value="active">Active</option>
-                                                <option value="inactive">Inactive</option>
+                                                <option value="Available">Available</option>
+                                                <option value="Sold">Sold</option>
                                             </select>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="form-label">Item Images</label>
+                                            <input type="file" class="form-control" id="editItemImages" multiple>
+                                            <small class="text-muted" id="currentImagesList"></small>
                                         </div>
                                     </div>
 
@@ -198,13 +209,16 @@
                             </div>
 
                             <div class="modal-footer">
-                                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button class="btn btn-warning">Update Item</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-warning" form="editItemForm">Update Item</button>
                             </div>
+
 
                         </div>
                     </div>
                 </div>
+
+                <!-- Delete Item Modal -->
                 <div class="modal fade" id="deleteItemModal" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -238,26 +252,7 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function () {
-
-            $('#itemsTable').DataTable({
-                responsive: true,
-                pageLength: 10
-            });
-
-            // Edit button
-            $('.editBtn').on('click', function () {
-                $('#editItemModal').modal('show');
-            });
-
-            // Delete button
-            $('.deleteBtn').on('click', function () {
-                $('#deleteItemModal').modal('show');
-            });
-
-        });
-    </script>
+    <script src="../assets/js/items.js?v=<?= filemtime(__DIR__ . '/../assets/js/items.js') ?>"></script>
 
 
 

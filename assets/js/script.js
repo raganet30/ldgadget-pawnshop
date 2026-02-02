@@ -19,154 +19,217 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 // Header scroll effect
-window.addEventListener('scroll', () => {
-    const header = document.getElementById('header');
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
+// window.addEventListener('scroll', () => {
+//     const header = document.getElementById('header');
+//     if (window.scrollY > 50) {
+//         header.classList.add('scrolled');
+//     } else {
+//         header.classList.remove('scrolled');
+//     }
+// });
+
+
 
 // Items for Sale Data
-const itemsData = [
-    {
-        id: 1,
-        name: "iPhone 13 Pro Max",
-        category: "cellphone",
-        description: "256GB, Sierra Blue, Face ID working, excellent condition",
-        price: 45000,
-        condition: "Good Condition",
-        icon: "fas fa-mobile-alt"
-    },
-    {
-        id: 2,
-        name: "Samsung Galaxy S21 Ultra",
-        category: "cellphone",
-        description: "512GB, Phantom Black, includes original charger",
-        price: 35000,
-        condition: "Good Condition",
-        icon: "fas fa-mobile-alt"
-    },
-    {
-        id: 3,
-        name: "MacBook Pro 2021",
-        category: "laptop",
-        description: "14-inch, M1 Pro chip, 16GB RAM, 512GB SSD",
-        price: 75000,
-        condition: "Good Condition",
-        icon: "fas fa-laptop"
-    },
-    {
-        id: 4,
-        name: "Dell XPS 13",
-        category: "laptop",
-        description: "Intel i7, 16GB RAM, 1TB SSD, touchscreen",
-        price: 45000,
-        condition: "Good Condition",
-        icon: "fas fa-laptop"
-    },
-    {
-        id: 5,
-        name: "Sony PlayStation 5",
-        category: "gadget",
-        description: "Disc version, 2 controllers, includes 3 games",
-        price: 28000,
-        condition: "Good Condition",
-        icon: "fas fa-gamepad"
-    },
-    {
-        id: 6,
-        name: "Canon EOS R5",
-        category: "gadget",
-        description: "Mirrorless camera, 45MP, with 24-105mm lens",
-        price: 120000,
-        condition: "Good Condition",
-        icon: "fas fa-camera"
-    },
-    {
-        id: 7,
-        name: "Honda Click 125i",
-        category: "motorcycle",
-        description: "2020 model, 8,500 km, automatic, complete papers",
-        price: 65000,
-        condition: "Good Condition",
-        icon: "fas fa-motorcycle"
-    },
-    {
-        id: 8,
-        name: "Yamaha NMAX",
-        category: "motorcycle",
-        description: "2021 model, 6,200 km, ABS, well-maintained",
-        price: 95000,
-        condition: "Good Condition",
-        icon: "fas fa-motorcycle"
-    },
-    {
-        id: 9,
-        name: "iPad Pro 12.9",
-        category: "gadget",
-        description: "5th generation, 1TB, Wi-Fi + Cellular, Magic Keyboard included",
-        price: 65000,
-        condition: "Good as new",
-        icon: "fas fa-tablet-alt"
+document.addEventListener('DOMContentLoaded', () => {
+    const itemsGrid = document.querySelector('.items-grid');
+    const filterContainer = document.querySelector('.items-filter');
+    const loadMoreContainer = document.querySelector('.load-more-container');
+    loadMoreContainer.className = 'load-more-container text-right mt-3';
+    itemsGrid.parentNode.appendChild(loadMoreContainer);
+
+    let allItems = [];
+    let categories = new Set();
+    let currentFilter = 'all';
+    let itemsPerPage = 9;
+    let currentPage = 1;
+
+    async function fetchItems() {
+        try {
+            const response = await fetch('admin/api/fetch_items.php');
+            const result = await response.json();
+            if (result.success) {
+                allItems = result.data;
+
+                // Collect unique categories
+                allItems.forEach(item => categories.add(item.category));
+
+                // Render category buttons
+                renderCategoryButtons();
+
+                // Show first page of all items
+                renderItems(currentFilter, currentPage);
+            } else {
+                itemsGrid.innerHTML = `<p class="text-danger">Failed to load items.</p>`;
+            }
+        } catch (error) {
+            console.error('Error fetching items:', error);
+            itemsGrid.innerHTML = `<p class="text-danger">An error occurred while loading items.</p>`;
+        }
     }
-];
 
-// Render items
-const itemsGrid = document.querySelector('.items-grid');
-const filterButtons = document.querySelectorAll('.filter-btn');
-
-function renderItems(filter = 'all') {
-    itemsGrid.innerHTML = '';
-    const filteredItems = filter === 'all'
-        ? itemsData
-        : itemsData.filter(item => item.category === filter);
-
-    filteredItems.forEach(item => {
-        const itemCard = document.createElement('div');
-        itemCard.className = 'item-card fade-in';
-        itemCard.setAttribute('data-category', item.category);
-
-        itemCard.innerHTML = `
-                    <div class="item-img" style="background-color: #f0f0f0;">
-                        <i class="${item.icon}" style="color: #ff6b6b; font-size: 3rem;"></i>
-                    </div>
-                    <div class="item-content">
-                        <h4>${item.name}</h4>
-                        <p>${item.description}</p>
-                        <div class="item-price">₱${item.price.toLocaleString()}</div>
-                        <span class="item-condition">${item.condition}</span>
-                        <button class="btn btn-secondary" style="margin-top: 15px; width: 100%;">Inquire Now</button>
-                    </div>
-                `;
-
-        itemsGrid.appendChild(itemCard);
-    });
-
-    // Trigger animation for new items
-    setTimeout(() => {
-        document.querySelectorAll('.item-card.fade-in').forEach(card => {
-            card.classList.add('visible');
+    function renderCategoryButtons() {
+        filterContainer.innerHTML = `<button class="filter-btn active" data-filter="all">All Items</button>`;
+        categories.forEach(cat => {
+            const displayName = cat.charAt(0).toUpperCase() + cat.slice(1);
+            filterContainer.innerHTML += `<button class="filter-btn" data-filter="${cat}">${displayName}</button>`;
         });
-    }, 100);
-}
 
-// Initialize with all items
-renderItems();
+        const filterButtons = filterContainer.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
 
-// Filter items
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Update active button
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
+                currentFilter = button.getAttribute('data-filter');
+                currentPage = 1; // Reset page
+                renderItems(currentFilter, currentPage);
+            });
+        });
+    }
 
-        // Filter items
-        const filter = button.getAttribute('data-filter');
-        renderItems(filter);
-    });
+    function renderItems(filter = 'all', page = 1) {
+        itemsGrid.innerHTML = '';
+        const filteredItems = filter === 'all'
+            ? allItems
+            : allItems.filter(item => item.category === filter);
+
+        const startIndex = 0;
+        const endIndex = page * itemsPerPage;
+        const itemsToShow = filteredItems.slice(0, endIndex);
+
+        itemsToShow.forEach(item => {
+            const itemCard = document.createElement('div');
+            itemCard.className = 'item-card fade-in';
+            itemCard.setAttribute('data-category', item.category);
+
+            // Handle images
+            let imageContent = '';
+            if (item.images.length > 1) {
+                imageContent = `<div class="item-slideshow">`;
+                item.images.forEach((img, idx) => {
+                    const imagePath = img.image_path.replace('../', 'admin/');
+                    imageContent += `<img src="${imagePath}" class="${idx === 0 ? 'active' : ''}" alt="${item.name}" />`;
+                });
+                imageContent += `</div>`;
+            } else if (item.images.length === 1) {
+                const imagePath = item.images[0].image_path.replace('../', 'admin/');
+                imageContent = `<div class="item-img"><img src="${imagePath}" alt="${item.name}" /></div>`;
+            } else {
+                imageContent = `<div class="item-img" style="background-color: #f0f0f0;">
+                                    <i class="fas fa-box" style="font-size:3rem; color:#ff6b6b;"></i>
+                                </div>`;
+            }
+
+            const isSold = item.status.toLowerCase() === 'sold';
+            const soldOverlay = isSold ? `<div class="sold-overlay">SOLD</div>` : '';
+            const buttonDisabled = isSold ? 'disabled style="opacity:0.6; cursor:not-allowed;"' : '';
+
+            itemCard.className = `item-card fade-in ${isSold ? 'sold' : ''}`;
+
+            itemCard.innerHTML = `
+                ${imageContent}
+                ${soldOverlay}
+                <div class="item-content">
+                    <h4>${item.name}</h4>
+                    <p>${item.description}</p>
+                    <div class="item-price">₱${Number(item.price).toLocaleString()}</div>
+                    <button class="btn btn-primary inquire-btn" ${buttonDisabled} 
+                            onclick="window.open('https://www.facebook.com/ldgadgetpawnshop/', '_blank')">
+                        Inquire Now
+                    </button>
+                </div>
+            `;
+
+            itemsGrid.appendChild(itemCard);
+        });
+
+        setTimeout(() => {
+            document.querySelectorAll('.item-card.fade-in').forEach(card => card.classList.add('visible'));
+        }, 100);
+
+        initUIFeatures();
+
+        // Render Load More button
+        renderLoadMoreButton(filteredItems.length, endIndex);
+    }
+
+    function renderLoadMoreButton(totalItems, shownItems) {
+        loadMoreContainer.innerHTML = '';
+        if (shownItems < totalItems) {
+            const loadBtn = document.createElement('button');
+            loadBtn.className = 'btn btn-outline-primary';
+            loadBtn.textContent = 'Load More Items';
+            loadBtn.addEventListener('click', () => {
+                currentPage++;
+                renderItems(currentFilter, currentPage);
+            });
+            loadMoreContainer.appendChild(loadBtn);
+        }
+    }
+
+    // function initSlideshows() {
+    //     const slideshows = document.querySelectorAll('.item-slideshow');
+    //     slideshows.forEach(slideshow => {
+    //         const images = slideshow.querySelectorAll('img');
+    //         let currentIndex = 0;
+    //         setInterval(() => {
+    //             images.forEach(img => img.classList.remove('active'));
+    //             currentIndex = (currentIndex + 1) % images.length;
+    //             images[currentIndex].classList.add('active');
+    //         }, 3000);
+    //     });
+    // }
+
+    function initImageModal() {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const captionText = document.getElementById('modalCaption');
+        const closeBtn = modal.querySelector('.close-modal');
+        const prevBtn = modal.querySelector('.prev');
+        const nextBtn = modal.querySelector('.next');
+
+        let currentImages = [];
+        let currentIndex = 0;
+
+        document.querySelectorAll('.item-img img, .item-slideshow img').forEach(img => {
+            img.addEventListener('click', (e) => {
+                const parentCard = e.target.closest('.item-card');
+                currentImages = Array.from(parentCard.querySelectorAll('img'));
+                currentIndex = currentImages.indexOf(e.target);
+                showModal(currentIndex);
+            });
+        });
+
+        function showModal(index) {
+            modal.style.display = 'block';
+            modalImg.src = currentImages[index].src;
+            captionText.innerHTML = currentImages[index].alt;
+        }
+
+        closeBtn.onclick = () => { modal.style.display = 'none'; }
+        nextBtn.onclick = () => {
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            showModal(currentIndex);
+        }
+        prevBtn.onclick = () => {
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            showModal(currentIndex);
+        }
+        modal.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; }
+    }
+
+    function initUIFeatures() {
+        // initSlideshows();
+        initImageModal();
+    }
+
+    fetchItems();
 });
+
+
+
+
 
 // Map initialization
 let map;
