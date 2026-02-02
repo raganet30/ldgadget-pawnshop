@@ -14,7 +14,7 @@ $password = $_POST['password'] ?? '';
    Basic Validations
 ---------------------*/
 if ($username === '' || $password === '') {
-    header("Location: ../public/login.php?error=Please fill in all fields");
+    header("Location: ../public/login?error=Please fill in all fields");
     exit;
 }
 
@@ -30,7 +30,7 @@ $stmt->execute(['username' => $username]);
 $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$admin) {
-    header("Location: ../public/login.php?error=Invalid login credentials");
+    header("Location: ../public/login?error=Invalid login credentials");
     exit;
 }
 
@@ -38,7 +38,7 @@ if (!$admin) {
    Verify Password
 ---------------------*/
 if (!password_verify($password, $admin['password_hash'])) {
-    header("Location: ../public/login.php?error=Invalid login credentials");
+    header("Location: ../public/login?error=Invalid login credentials");
     exit;
 }
 
@@ -56,5 +56,5 @@ $update = $pdo->prepare(
 );
 $update->execute(['id' => $admin['id']]);
 
-header("Location: ../public/dashboard.php");
+header("Location: ../public/dashboard");
 exit;

@@ -1,0 +1,21 @@
+RewriteEngine On
+
+# --------------------------------------
+# Redirect .php URLs to clean ones
+# --------------------------------------
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteRule ^ %{REQUEST_URI} [R=302,L]
+
+
+# --------------------------------------
+# Rewrite clean URLs internally to .php
+# --------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ $1.php [L]
+
+# --------------------------------------
+# Block direct .php access
+# --------------------------------------
+RewriteCond %{THE_REQUEST} \.php
+RewriteRule ^ - [F]

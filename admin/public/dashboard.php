@@ -9,13 +9,13 @@
 
     <div class="admin-wrapper">
 
-        <?php   include '../views/sidebar.php'; ?>
+        <?php include '../views/sidebar.php'; ?>
 
         <!-- Main Area -->
         <div class="main">
 
             <!-- Header -->
-            <?php   include '../views/header.php'; ?>
+            <?php include '../views/header.php'; ?>
 
             <main class="content">
 
@@ -28,15 +28,15 @@
                         <i class="bi bi-megaphone"></i>
                         <div>
                             <h3>Active Ads</h3>
-                            <span>4</span>
+                            <span></span>
                         </div>
                     </div>
 
                     <div class="stat-card">
-                        <i class="bi bi-gem"></i>
+                        <i class="bi bi-tag"></i>
                         <div>
                             <h3>Subasta Items</h3>
-                            <span>28</span>
+                            <span></span>
                         </div>
                     </div>
 
@@ -44,49 +44,48 @@
                         <i class="bi bi-shop"></i>
                         <div>
                             <h3>Branches</h3>
-                            <span>3</span>
+                            <span></span>
                         </div>
                     </div>
 
-                    <!-- <div class="stat-card">
-                        <i class="bi bi-envelope"></i>
+                    <div class="stat-card">
+                        <i class="bi bi-question-circle"></i>
                         <div>
-                            <h3>Unread Messages</h3>
-                            <span class="alert">6</span>
+                            <h3>FAQs</h3>
+                            <span></span>
                         </div>
-                    </div> -->
+                    </div>
+
+
                 </div>
 
-                <!-- Recent Activity -->
-                <section class="panel">
-                    <h2>Recent Activity</h2>
-                    <ul class="activity-list">
-                        <li>📩 New inquiry received from Contact Us</li>
-                        <li>💎 New Subasta item added</li>
-                        <li>📢 Ads section updated</li>
-                        <li>🏪 Branch information modified</li>
-                    </ul>
-                </section>
-
-                <!-- Quick Actions -->
-                <section class="panel">
-                    <h2>Quick Actions</h2>
-                    <div class="actions">
-                        <button class="btn-action">➕ Add New Ad</button>
-                        <button class="btn-action">➕ Add Subasta Item</button>
-                        <button class="btn-action">➕ Add Branch</button>
-                        <button class="btn-action">📩 View Messages</button>
-                    </div>
-                </section>
 
             </main>
 
 
-          <?php include("../views/footer.php"); ?>
+            <?php include("../views/footer.php"); ?>
 
         </div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../api/fetch_dashboard_stats.php')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        const stats = data.data;
+                        document.querySelector('.stat-card:nth-child(1) span').textContent = stats.ads;
+                        document.querySelector('.stat-card:nth-child(2) span').textContent = stats.items;
+                        document.querySelector('.stat-card:nth-child(3) span').textContent = stats.branches;
+                        document.querySelector('.stat-card:nth-child(4) span').textContent = stats.faqs;
+                    } else {
+                        console.error('Failed to fetch stats:', data.message);
+                    }
+                })
+                .catch(err => console.error('Error:', err));
+        });
+    </script>
 
 
 </body>

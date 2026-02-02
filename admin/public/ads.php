@@ -32,7 +32,7 @@
 
                 </div>
 
-                <!-- Ads Table -->
+              
                 <!-- Ads Table -->
                 <div class="card">
                     <div class="card-body">

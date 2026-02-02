@@ -5,27 +5,23 @@
     </div>
 
     <ul class="sidebar-menu">
-        <li data-page="dashboard.php" onclick="location.href='dashboard.php'">
+        <li data-page="dashboard.php" onclick="location.href='dashboard'">
             <i class="bi bi-speedometer2"></i>
             <span>Dashboard</span>
         </li>
-        <li data-page="ads.php" onclick="location.href='ads.php'">
+        <li data-page="ads.php" onclick="location.href='ads'">
             <i class="bi bi-megaphone"></i>
             <span>Ads Section</span>
         </li>
-        <li data-page="items.php" onclick="location.href='items.php'">
-            <i class="bi bi-gem"></i>
+        <li data-page="items.php" onclick="location.href='items'">
+            <i class="bi bi-tag"></i>
             <span>Subasta Items</span>
         </li>
-        <li data-page="branches.php" onclick="location.href='branches.php'">
+        <li data-page="branches.php" onclick="location.href='branches'">
             <i class="bi bi-shop"></i>
             <span>Branches</span>
         </li>
-        <li data-page="contact.php" onclick="location.href='contact.php'">
-            <i class="bi bi-envelope"></i>
-            <span>Contact Us</span>
-        </li>
-        <li data-page="faqs.php" onclick="location.href='faqs.php'">
+        <li data-page="faqs.php" onclick="location.href='faqs'">
             <i class="bi bi-question-circle"></i>
             <span>FAQs</span>
         </li>

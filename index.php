@@ -28,18 +28,20 @@
     <header id="header">
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo"><i class="fas fa-store-alt"></i> LD Gadget Pawnshop</a>
+                <a href="#home" class="logo"> <img src="assets/images/ldgadget_logo.jpg" alt="LD Gadget Pawnshop Logo">
+                    LD Gadget Pawnshop</a>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#rates">Rates</a></li>
+                    <!-- <li><a href="#rates">Rates</a></li> -->
                     <li><a href="#services">Services</a></li>
                     <li><a href="#how-to">How to Pawn</a></li>
                     <li><a href="#items">Items</a></li>
                     <li><a href="#locations">Locations</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="#faq">FAQs</a></li>
                 </ul>
             </nav>
         </div>
@@ -60,28 +62,36 @@
 
 
 
-    <!-- Interest Rates Section -->
+    <!-- Interest Rates Section - Minimalist Redesign -->
     <section class="interest-rates" id="rates">
         <div class="container">
             <div class="section-title">
                 <h2>Low Interest Rates</h2>
             </div>
-            <div class="rate-cards">
-                <div class="rate-card gadget fade-in">
-                    <div class="rate-icon">
+
+            <div class="rate-display minimalist">
+                <div class="rate-item">
+                    <div class="rate-icon minimalist">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Gadgets & Electronics</h3>
-                    <div class="rate-percent">6<span>%</span></div>
-                    <p>Cellphones, laptops, tablets, cameras, and other electronics</p>
+                    <div class="rate-content">
+                        <h3>Gadgets & Electronics</h3>
+                        <p class="rate-description">Cellphones, laptops, tablets, cameras, and other electronics</p>
+                        <div class="rate-value">6<span>%</span></div>
+                    </div>
                 </div>
-                <div class="rate-card motorcycle fade-in">
-                    <div class="rate-icon">
+
+                <div class="rate-divider"></div>
+
+                <div class="rate-item">
+                    <div class="rate-icon minimalist">
                         <i class="fas fa-motorcycle"></i>
                     </div>
-                    <h3>Motorcycles</h3>
-                    <div class="rate-percent">8<span>%</span></div>
-                    <p>All motorcycle brands and models with complete OR/CR</p>
+                    <div class="rate-content">
+                        <h3>Motorcycles</h3>
+                        <p class="rate-description">All motorcycle brands and models with complete OR/CR</p>
+                        <div class="rate-value">8<span>%</span></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -155,7 +165,7 @@
                 <div class="step fade-in">
                     <div class="step-number">2</div>
                     <h4>Present Valid ID</h4>
-                    <p>Bring any government-issued ID for verification (e.g., driver's license, passport).</p>
+                    <p>Bring any government-issued ID for verification (e.g., driver's license, TIN Card, etc.).</p>
                 </div>
                 <div class="step fade-in">
                     <div class="step-number">3</div>
@@ -203,30 +213,14 @@
                 <h2>Our Branch Locations</h2>
             </div>
             <div class="locations-container">
-                <div class="location-info">
-                    <div class="location-card active" data-location="main">
-                        <h4>Main Branch</h4>
-                        <p><i class="fas fa-map-marker-alt"></i> Navarro St. cor. Umbria St., Calbayog City, Samar</p>
-                        <p><i class="fas fa-phone"></i> (02) 8123-4567</p>
-                        <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 6:00 PM</p>
-                    </div>
-                    <div class="location-card" data-location="gandara">
-                        <h4>Gandara Branch</h4>
-                        <p><i class="fas fa-map-marker-alt"></i>Gandara, Samar</p>
-                        <p><i class="fas fa-phone"></i> (02) 8987-6543</p>
-                        <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 6:00 PM</p>
-                    </div>
-                    <div class="location-card" data-location="catbalogan">
-                        <h4>Catbalogan City Branch</h4>
-                        <p><i class="fas fa-map-marker-alt"></i>Catbalogan City, Samar</p>
-                        <p><i class="fas fa-phone"></i> (02) 8654-3210</p>
-                        <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 6:00 PM</p>
-                    </div>
+                <div class="location-info" id="branchesContainer">
+                    <!-- Branch cards will be populated here -->
                 </div>
                 <div class="location-map">
                     <div id="map"></div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -256,27 +250,10 @@
                 </div>
                 <div class="contact-info fade-in">
                     <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4>Phone Number</h4>
-                                <p>(02) 8123-4567</p>
-                                <p>Globe: 0917-123-4567</p>
-                                <p>Smart: 0918-987-6543</p>
-                            </div>
+                        <div class="contact-items" id="branchesContactContainer">
+                            <!-- Contact items will be populated here -->
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4>Email Address</h4>
-                                <p>info@ldgadgetpawnshop.com</p>
-                                <p>sales@gadgetpawnshop.com</p>
-                            </div>
-                        </div>
+
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -304,48 +281,18 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
         <div class="container">
             <div class="section-title">
                 <h2>Frequently Asked Questions</h2>
             </div>
-            <div class="faq-container">
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span>What happens if I can't redeem my item on time?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We offer a grace period of 30 days after the redemption date. If you're unable to redeem
-                            within this period, you may apply for a renewal by paying the interest. If not renewed, the
-                            item will be forfeited and made available for sale.</p>
-                    </div>
-                </div>
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span>Do you accept items without receipts?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, we accept items without receipts. However, having the original receipt may result in a
-                            higher appraisal value. For gadgets, we conduct thorough testing to determine functionality
-                            and value.</p>
-                    </div>
-                </div>
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span>How do you determine the value of my item?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our expert appraisers consider several factors: current market value, brand, model,
-                            condition, age, functionality, and demand. We use up-to-date pricing guides and market
-                            analysis to ensure fair valuation.</p>
-                    </div>
-                </div>
+            <div class="faq-container" id="faqContainer">
+                <!-- FAQs will be populated here via JS -->
             </div>
         </div>
     </section>
+
 
     <!-- Interest Calculator Section -->
     <section class="calculator-section">
@@ -391,10 +338,10 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Gadget Pawnshop</h3>
-                    <p>Your trusted partner for fast, safe, and affordable pawning services since 2025. We provide the
+                    <p>Your trusted partner for fast, safe, and affordable pawning services since 2024. We provide the
                         lowest interest rates with flexible terms.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/ldgadgetpawnshop/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
@@ -427,8 +374,16 @@
         </div>
     </footer>
 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="assets/js/script.js?v=<?= filemtime(__DIR__ . '/assets/js/script.js') ?>"></script>
+    <script src="assets/js/items.js?v=<?= filemtime(__DIR__ . '/assets/js/items.js') ?>"></script>
+    <script src="assets/js/branches.js?v=<?= filemtime(__DIR__ . '/assets/js/branches.js') ?>"></script>
+    <script src="assets/js/hero.js?v=<?= filemtime(__DIR__ . '/assets/js/hero.js') ?>"></script>
+    <script src="assets/js/contacts.js?v=<?= filemtime(__DIR__ . '/assets/js/contacts.js') ?>"></script>
+    <script src="assets/js/faq.js?v=<?= filemtime(__DIR__ . '/assets/js/faq.js') ?>"></script>
+
 </body>
 
 </html>

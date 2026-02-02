@@ -8,7 +8,7 @@
             <span class="avatar">
                 <i class="bi bi-person-circle"></i>
             </span>
-            <a href="logout.php" class="logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+            <a href="logout" class="logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
         </div>
     </div>
 </header>
