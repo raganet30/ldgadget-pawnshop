@@ -23,7 +23,7 @@
 
                 <div class="form-group">
                     <label>Email or Username</label>
-                    <input type="text" name="username" placeholder="admin@example.com" required>
+                    <input type="text" name="username" placeholder="username" required>
                 </div>
 
                 <div class="form-group">
