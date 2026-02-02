@@ -39,26 +39,37 @@ const branchLocations = {
 };
 
 function initMap() {
-    // Initialize map centered on Main Branch
-    map = L.map('map').setView([branchLocations.main.lat, branchLocations.main.lng], 12);
+    // Initialize map (zoomed in but locked)
+    map = L.map('map', {
+        zoomControl: false,
+        dragging: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        touchZoom: false,
+        boxZoom: false,
+        keyboard: false
+    }).setView(
+        [branchLocations.main.lat, branchLocations.main.lng],
+        17 //  change this value for initial zoom
+    );
 
     // Add tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Add markers for each branch
+    // Add markers
     Object.keys(branchLocations).forEach(key => {
         const branch = branchLocations[key];
         const marker = L.marker([branch.lat, branch.lng]).addTo(map);
         marker.bindPopup(`<b>${branch.name}</b>`);
 
-        // Highlight main branch
         if (key === 'main') {
             marker.openPopup();
         }
     });
 }
+
 
 // Initialize map when page loads
 document.addEventListener('DOMContentLoaded', initMap);
