@@ -47,16 +47,16 @@
         </div>
     </header>
 
+
     <!-- Hero Section -->
     <section class="hero-carousel" id="home">
         <div class="carousel-container" id="heroCarouselContainer">
             <!-- Slides will be inserted here -->
         </div>
 
-        <!-- Carousel Controls -->
-        <div class="carousel-controls">
-            <span class="prev">&#10094;</span>
-            <span class="next">&#10095;</span>
+        <!-- Carousel Controls - Dots at bottom -->
+        <div class="carousel-controls" id="carouselDots">
+            <!-- Dots will be dynamically added via JavaScript -->
         </div>
     </section>
 
@@ -341,7 +341,8 @@
                     <p>Your trusted partner for fast, safe, and affordable pawning services since 2024. We provide the
                         lowest interest rates with flexible terms.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/ldgadgetpawnshop/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/ldgadgetpawnshop/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>

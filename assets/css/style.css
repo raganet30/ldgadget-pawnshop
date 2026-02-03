@@ -226,6 +226,7 @@
 
         /* Hero Carousel Design */
         /* Hero Carousel - Mobile Responsive */
+        /* Hero Carousel - Mobile Responsive */
         .hero-carousel {
             position: relative;
             overflow: hidden;
@@ -300,34 +301,74 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
-        /* Carousel Controls */
+        /* Carousel Controls - Updated to dots at bottom */
         .carousel-controls {
             position: absolute;
-            top: 50%;
+            bottom: 30px;
+            left: 0;
             width: 100%;
             display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 20px;
-            pointer-events: none;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
             z-index: 10;
-             opacity: 60%;
+            opacity: 0.8;
+            pointer-events: none;
         }
 
-        .carousel-controls span {
-            font-size: 3rem;
-            color: #fff;
+        .carousel-controls .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
             cursor: pointer;
+            transition: all 0.3s ease;
             pointer-events: all;
-            user-select: none;
-            transition: color 0.3s ease;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            /* Larger touch area */
+            border: 2px solid transparent;
         }
 
-        .carousel-controls span:hover {
-            color: #ffdd57;
+        .carousel-controls .dot:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
+        }
+
+        .carousel-controls .dot.active {
+            background-color: var(--primary-red, #ff3860);
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(255, 56, 96, 0.5);
+        }
+
+        .carousel-controls .nav-btn {
+            display: none;
+            /* Hide arrow buttons by default, we'll use dots */
+        }
+
+        /* Alternative: If you want both dots AND arrow buttons */
+        .carousel-controls.with-arrows {
+            gap: 30px;
+        }
+
+        .carousel-controls.with-arrows .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: all;
+            border: none;
+            opacity: 0.7;
+        }
+
+        .carousel-controls.with-arrows .nav-btn:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            opacity: 1;
+            transform: scale(1.1);
         }
 
         /* Animations */
@@ -338,6 +379,18 @@
 
             100% {
                 opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
             }
         }
 
@@ -402,8 +455,13 @@
                 font-size: 1rem;
             }
 
-            .carousel-controls span {
-                font-size: 2.8rem;
+            .carousel-controls {
+                bottom: 25px;
+            }
+
+            .carousel-controls .dot {
+                width: 11px;
+                height: 11px;
             }
         }
 
@@ -435,9 +493,14 @@
                 min-width: 130px;
             }
 
-            .carousel-controls span {
-                font-size: 2.5rem;
-                padding: 8px;
+            .carousel-controls {
+                bottom: 20px;
+                gap: 12px;
+            }
+
+            .carousel-controls .dot {
+                width: 10px;
+                height: 10px;
             }
         }
 
@@ -480,13 +543,24 @@
             }
 
             .carousel-controls {
-                padding: 0 10px;
-                opacity: 60%;
+                bottom: 15px;
+                gap: 10px;
+                opacity: 0.9;
+                /* More visible on mobile */
             }
 
-            .carousel-controls span {
-                font-size: 2rem;
-                padding: 6px;
+            .carousel-controls .dot {
+                width: 9px;
+                height: 9px;
+            }
+
+            /* Larger dots for better touch targets on mobile */
+            @media (hover: none) and (pointer: coarse) {
+                .carousel-controls .dot {
+                    width: 12px;
+                    height: 12px;
+                    margin: 0 5px;
+                }
             }
         }
 
@@ -510,9 +584,13 @@
                 font-size: 0.85rem;
             }
 
-            .carousel-controls span {
-                font-size: 1.8rem;
-                
+            .carousel-controls {
+                bottom: 12px;
+            }
+
+            .carousel-controls .dot {
+                width: 8px;
+                height: 8px;
             }
         }
 
@@ -530,15 +608,24 @@
                 font-size: 1.3rem;
                 max-width: 800px;
             }
+
+            .carousel-controls {
+                bottom: 40px;
+            }
+
+            .carousel-controls .dot {
+                width: 14px;
+                height: 14px;
+            }
         }
 
         /* Accessibility improvements for mobile */
         @media (hover: none) and (pointer: coarse) {
-            .carousel-controls span {
-                font-size: 2.8rem;
+            .carousel-controls .dot {
+                width: 14px;
                 /* Larger for touch */
-                padding: 15px;
-                /* More touch area */
+                height: 14px;
+                margin: 0 3px;
             }
 
             .hero-buttons .btn:hover {
@@ -546,9 +633,12 @@
                 /* Remove hover effects on touch devices */
             }
 
-            .carousel-controls span:hover {
-                color: #fff;
-                /* Keep original color on touch devices */
+            .carousel-controls .dot:hover {
+                transform: none;
+            }
+
+            .carousel-controls .dot.active {
+                animation: pulse 2s infinite;
             }
         }
 
@@ -579,6 +669,10 @@
                 padding: 8px 16px;
                 font-size: 0.85rem;
                 min-width: auto;
+            }
+
+            .carousel-controls {
+                bottom: 10px;
             }
         }
 
