@@ -280,7 +280,7 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
+
     <!-- FAQ Section -->
     <section class="faq-section" id="faq">
         <div class="container">

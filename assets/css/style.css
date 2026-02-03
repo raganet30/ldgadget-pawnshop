@@ -223,6 +223,8 @@
         }
 
 
+
+        /* Hero Carousel Design */
         /* Hero Carousel - Mobile Responsive */
         .hero-carousel {
             position: relative;
@@ -309,6 +311,7 @@
             padding: 0 20px;
             pointer-events: none;
             z-index: 10;
+             opacity: 60%;
         }
 
         .carousel-controls span {
@@ -478,6 +481,7 @@
 
             .carousel-controls {
                 padding: 0 10px;
+                opacity: 60%;
             }
 
             .carousel-controls span {
@@ -508,6 +512,7 @@
 
             .carousel-controls span {
                 font-size: 1.8rem;
+                
             }
         }
 
@@ -576,6 +581,7 @@
                 min-width: auto;
             }
         }
+
 
         /* Interest Rates Section - Minimalist Redesign */
         .interest-rates {
