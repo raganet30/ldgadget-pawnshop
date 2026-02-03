@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="item-price">₱${Number(item.price).toLocaleString()}</div>
                     <button class="btn btn-primary inquire-btn" ${buttonDisabled} 
                             onclick="window.open('https://www.facebook.com/ldgadgetpawnshop/', '_blank')">
-                        Buy Now
+                        Inquire Now
                     </button>
                 </div>
             `;
