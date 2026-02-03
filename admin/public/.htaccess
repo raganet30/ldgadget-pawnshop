@@ -1,21 +1,24 @@
 RewriteEngine On
+RewriteBase /admin/public/
 
 # --------------------------------------
 # Redirect .php URLs to clean ones
+# /admin/public/page.php → /admin/public/page
 # --------------------------------------
-RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteCond %{THE_REQUEST} \s/+admin/public/(.+?)\.php[\s?] [NC]
 RewriteRule ^ %1 [R=301,L]
 
 # --------------------------------------
 # Rewrite clean URLs internally to .php
+# /admin/public/page → /admin/public/page.php
 # --------------------------------------
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.+)$ $1.php [L]
 
 # --------------------------------------
-# Block direct access to .php files
-# (but allow internal rewrites)
+# Block direct browser access to .php
+# (allow internal rewrites)
 # --------------------------------------
-RewriteCond %{THE_REQUEST} \s/+.+\.php[\s?] [NC]
+RewriteCond %{THE_REQUEST} \s/+admin/public/.+\.php[\s?] [NC]
 RewriteRule ^.+\.php$ - [F]
