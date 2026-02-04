@@ -267,13 +267,31 @@ body.admin-body {
     cursor: pointer;
 }
 
-.avatar {
-    background: linear-gradient(135deg, #ff6b6b, #e74c3c);
-    color: #fff;
-    padding: 8px;
-    border-radius: 50%;
-    font-size: 0.9rem;
+.profile-trigger {
+    color: #333;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+.profile-trigger:hover,
+.profile-trigger:focus {
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+.profile-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+/* Optional: subtle emphasis on smaller screens */
+@media (max-width: 768px) {
+    .profile-trigger {
+        padding: 6px;
+    }
+}
+
 
 .logout {
     font-size: 0.9rem;

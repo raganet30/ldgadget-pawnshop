@@ -30,7 +30,7 @@
                     <label>Password</label>
                     <div class="password-wrapper">
                         <input type="password" name="password" id="password" placeholder="••••••••" required>
-                        <span class="toggle-password" onclick="togglePassword()">👁</span>
+                        <span class="toggle-password" onclick="togglePassword()"><i class="bi bi-eye"></i></span>
                     </div>
                 </div>
 

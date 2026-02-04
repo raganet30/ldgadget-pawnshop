@@ -48,8 +48,7 @@ if (!password_verify($password, $admin['password_hash'])) {
 session_regenerate_id(true);
 
 $_SESSION['admin_id']   = $admin['id'];
-$_SESSION['admin_name'] = $admin['name'];
-$_SESSION['admin_role'] = $admin['role'];
+
 
 $update = $pdo->prepare(
     "UPDATE admins SET last_login = NOW() WHERE id = :id"
