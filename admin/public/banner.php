@@ -47,7 +47,7 @@
                                 </tr>
                             </thead>
 
-                            <tbody id="adsTableBody">
+                            <tbody id="adsTableBody" class="text-center">
                                 <!-- Dynamic Content -->
                             </tbody>
                         </table>

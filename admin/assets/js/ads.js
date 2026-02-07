@@ -63,7 +63,7 @@ function fetchAds() {
 
                 adsDataTable.row.add([
                     `
-                    <img src="${ad.image || '../assets/img/placeholder.png'}"
+                    <img src="${ad.image}" alt="Banner Image"
                          class="img-thumbnail"
                          style="max-width:80px; cursor: zoom-in;"
                          onclick="openImageZoom(this.src)">
