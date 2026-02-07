@@ -9,9 +9,9 @@
             <i class="bi bi-speedometer2"></i>
             <span>Dashboard</span>
         </li>
-        <li data-page="ads.php" onclick="location.href='ads'">
+        <li data-page="banner.php" onclick="location.href='banner'">
             <i class="bi bi-megaphone"></i>
-            <span>Ads Section</span>
+            <span>Banner Section</span>
         </li>
         <li data-page="items.php" onclick="location.href='items'">
             <i class="bi bi-tag"></i>

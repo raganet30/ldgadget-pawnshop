@@ -22,12 +22,12 @@
                 <div class="page-header">
 
                     <div>
-                        <h1>Ads Section</h1>
-                        <p class="subtitle">Manage homepage hero ads on website</p>
+                        <h1>Banner Section</h1>
+                        <p class="subtitle">Manage homepage banner on website</p>
                     </div>
 
                     <button class="btn-primary" onclick="openAddAdModal()">
-                        <i class="bi bi-plus-circle"></i> Add New Ads
+                        <i class="bi bi-plus-circle"></i> Add New Banner
                     </button>
 
                 </div>
@@ -67,7 +67,7 @@
                             <form id="addAdForm" enctype="multipart/form-data">
 
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="addAdModalLabel">Add New Ad</h5>
+                                    <h5 class="modal-title" id="addAdModalLabel">Add New Banner</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -144,7 +144,7 @@
                             <form id="editAdForm" enctype="multipart/form-data">
 
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="editAdModalLabel">Edit Ad</h5>
+                                    <h5 class="modal-title" id="editAdModalLabel">Edit Banner</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -228,7 +228,7 @@
                                 <div id="deleteAlert"></div>
 
                                 <p class="mb-0">
-                                    Are you sure you want to delete this ad?
+                                    Are you sure you want to delete this banner?
                                 </p>
                                 <small class="text-muted">
                                     This action cannot be undone.
